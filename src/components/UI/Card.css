@@ -1,0 +1,27 @@
+.card {
+  padding: 0.5rem;
+  margin: 1%;
+  border: 4px #149209 solid;
+  width: 20%;
+  display: inline-block;
+  border-radius: 25px;
+  background-color: rgb(190, 194, 173);
+}
+
+.card_text {
+  color: #149209;
+  font-size: 2em;
+  margin-bottom: 20%;
+  float: left;
+}
+
+.card_sep {
+  border: 1px solid rgb(22, 22, 22);
+}
+
+.card_header {
+  font-size: 2em;
+  color: #149209;
+  text-align: left;
+  width: 50%;
+}
