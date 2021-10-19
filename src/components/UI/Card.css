@@ -8,6 +8,15 @@
   background-color: rgb(190, 194, 173);
 }
 
+.card_selected {
+  border: 14px #149209 solid;
+  font-weight: bold;
+}
+
+.card_oneline {
+  display: flex;
+}
+
 .card_text {
   color: #149209;
   font-size: 2em;
@@ -24,4 +33,14 @@
   color: #149209;
   text-align: left;
   width: 50%;
+}
+
+.card_checkbox {
+  text-align: right;
+  width: 50%;
+}
+
+.card_checkbox_value {
+  width: 30px;
+  height: 30px;
 }
