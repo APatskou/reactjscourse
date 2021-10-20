@@ -1,0 +1,9 @@
+.controls {
+  text-align: right;
+  width: 50%;
+  display: inline-block;
+}
+
+.control-display-none {
+  display: none;
+}

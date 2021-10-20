@@ -24,6 +24,11 @@
   float: left;
 }
 
+.card_text_edited:hover {
+  background-color: rgba(217, 245, 255,0.5);
+  border-radius: 7px;
+}
+
 .card_sep {
   border: 1px solid rgb(22, 22, 22);
 }
@@ -32,6 +37,11 @@
   font-size: 2em;
   text-align: left;
   width: 50%;
+}
+
+.card_header_edited:hover {
+  background-color: rgba(217, 245, 255,0.5);
+  border-radius: 7px;
 }
 
 .card_checkbox {
