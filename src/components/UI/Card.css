@@ -1,15 +1,16 @@
 .card {
   padding: 0.5rem;
   margin: 1%;
-  border: 4px #149209 solid;
-  width: 20%;
+  border: 2px #3f1cdb solid;
+  width: 15%;
   display: inline-block;
-  border-radius: 25px;
-  background-color: rgb(190, 194, 173);
+  border-radius: 10px;
+  background-color: rgb(194, 189, 189);
+  color: #6e54dd;
 }
 
 .card_selected {
-  border: 14px #149209 solid;
+  border: 5px #3f1cdb solid;
   font-weight: bold;
 }
 
@@ -18,7 +19,6 @@
 }
 
 .card_text {
-  color: #149209;
   font-size: 2em;
   margin-bottom: 20%;
   float: left;
@@ -30,7 +30,6 @@
 
 .card_header {
   font-size: 2em;
-  color: #149209;
   text-align: left;
   width: 50%;
 }
@@ -41,6 +40,6 @@
 }
 
 .card_checkbox_value {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
 }

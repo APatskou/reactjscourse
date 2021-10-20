@@ -14,6 +14,8 @@ const App = () => {
     { id: 6, caption: "Ford", text: "2005", model: 'Focus' },
     { id: 7, caption: "Kia", text: "2020", model: 'Sorento' },
     { id: 8, caption: "Volkswagen", text: "1998", model: 'Touareg' },
+    { id: 9, caption: "Kia", text: "2014", model: 'Rio' },
+    { id: 10, caption: "Mazda", text: "2003", model: '6' },
   ];
 
   const header = "Авто из Америки и Европы";
