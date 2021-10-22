@@ -1,9 +1,10 @@
 .header {
   position: relative;
   margin: 20px;
-  border: 5px #9924b1 solid;
+  border: 5px #3f1cdb solid;
   text-align: center;
-  color: #7227b8;
-  background-color: rgb(216, 192, 238);
-  border-radius: 25px;
+  font-size: x-large;
+  color: #e9e3f0;
+  background-image: url("./imgs/header.jpg");
+  border-radius: 10px;
 }

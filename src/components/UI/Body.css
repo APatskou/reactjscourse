@@ -2,10 +2,10 @@
   position: relative;
   min-height: 100%;
   margin: 20px;
-  border: 5px #9924b1 solid;
+  border: 5px #3f1cdb solid;
   text-align: center;
-  color: #7227b8;
-  background-color: rgb(216, 192, 238);
-  border-radius: 25px;
-  height: 80vh;
+  color: #e9e3f0;
+  background-color: rgba(194, 189, 189, 0.486);
+  border-radius: 10px;
+  height: 75vh;
 }
