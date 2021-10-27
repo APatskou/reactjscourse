@@ -1,32 +1,26 @@
 .card {
   padding: 0.5rem;
-  margin: 1%;
+  margin: 10px;
   border: 2px #3f1cdb solid;
   width: 15%;
-  display: inline-block;
   border-radius: 10px;
+  display: inline-block;
   background-color: rgb(194, 189, 189);
   color: #6e54dd;
+  font-size: 20px;
 }
 
 .card_selected {
   border: 5px #3f1cdb solid;
-  font-weight: bold;
 }
 
 .card_oneline {
   display: flex;
+  flex-direction: row;  
 }
 
-.card_text {
-  font-size: 2em;
-  margin-bottom: 20%;
-  float: left;
-}
-
-.card_text_edited:hover {
-  background-color: rgba(217, 245, 255,0.5);
-  border-radius: 7px;
+.card_description {
+  text-align: left;
 }
 
 .card_sep {
@@ -34,22 +28,15 @@
 }
 
 .card_header {
-  font-size: 2em;
   text-align: left;
-  width: 50%;
+  width: 75%;
 }
 
-.card_header_edited:hover {
-  background-color: rgba(217, 245, 255,0.5);
-  border-radius: 7px;
+.edited {
+  border-bottom-style: inset;
 }
 
 .card_checkbox {
   text-align: right;
-  width: 50%;
-}
-
-.card_checkbox_value {
-  width: 15px;
-  height: 15px;
+  width: 25%;
 }

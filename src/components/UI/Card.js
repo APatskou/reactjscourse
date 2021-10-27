@@ -3,13 +3,20 @@ import React, { useState } from "react";
 import "./Card.css";
 import Controls from "./Controls";
 
-function Card({ item }) {
+function Card(props) {
   const [isSelected, setSelected] = useState(false);
   const [isEdited, setEdited] = useState(false);
-  const [header, setHeader] = useState(item.caption);
-  const [enteredHeader, setEnteredHeader] = useState(item.caption);
-  const [text, setText] = useState(item.text);
-  const [enteredText, setEnteredText] = useState(item.text);
+
+  const [enteredValues, setEnteredValues] = useState({
+    curBrand: props.item.brand,
+    curModel: props.item.model,
+    curYear: props.item.year,
+    curDescription: props.item.description,
+    enteredBrand: props.item.brand,
+    enteredModel: props.item.model,
+    enteredYear: props.item.year,
+    enteredDescription: props.item.description,
+  });
 
   const setEditedHandler = (value) => {
     setEdited(value);
@@ -20,36 +27,70 @@ function Card({ item }) {
   };
 
   const saveClickHandler = () => {
-    setHeader(enteredHeader);
-    setText(enteredText);
+    setEnteredValues({
+      ...enteredValues,
+      curBrand: enteredValues.enteredBrand,
+      curModel: enteredValues.enteredModel,
+      curYear: enteredValues.enteredYear,
+      curDescription: enteredValues.enteredDescription,
+    });
+    props.onChange({
+      id: props.item.id,
+      brand: enteredValues.enteredBrand,
+      model: enteredValues.enteredModel,
+      year: enteredValues.enteredYear,
+      description: enteredValues.enteredDescription,
+    });
   };
 
   const cancelClickHandler = () => {
-    setEnteredHeader(header);
-    setEnteredText(text);
+    setEnteredValues({
+      ...enteredValues,
+      enteredBrand: enteredValues.curBrand,
+      enteredModel: enteredValues.curModel,
+      enteredYear: enteredValues.curYear,
+      enteredDescription: enteredValues.curDescription,
+    });
   };
 
-  const updateHeader = (event) => {
-    setEnteredHeader(event.target.innerText);
-  };
-
-  const updateText = (event) => {
-    setEnteredText(event.target.innerText);
+  const updateValues = (event) => {
+    setEnteredValues({
+      ...enteredValues,
+      [event.target.id]: event.target.innerText,
+    });
   };
 
   return (
     <div className={classNames({ card: true, card_selected: isSelected })}>
       <div className="card_oneline">
-        <div
-          className={classNames({
-            card_header: true,
-            card_header_edited: isEdited,
-          })}
-          contentEditable={isEdited}
-          onInput={updateHeader}
-          suppressContentEditableWarning={true}
-        >
-          {enteredHeader}
+        <div className="card_header">
+          <div
+            className={classNames({ edited: isEdited })}
+            id="enteredBrand"
+            contentEditable={isEdited}
+            onBlur={updateValues}
+            suppressContentEditableWarning={true}
+          >
+            {enteredValues.enteredBrand}
+          </div>
+          <div
+            className={classNames({ edited: isEdited })}
+            id="enteredModel"
+            contentEditable={isEdited}
+            onBlur={updateValues}
+            suppressContentEditableWarning={true}
+          >
+            {enteredValues.enteredModel}
+          </div>
+          <div
+            className={classNames({ edited: isEdited })}
+            id="enteredYear"
+            contentEditable={isEdited}
+            onBlur={updateValues}
+            suppressContentEditableWarning={true}
+          >
+            {enteredValues.enteredYear}
+          </div>
         </div>
         <div className="card_checkbox">
           <Controls
@@ -62,12 +103,13 @@ function Card({ item }) {
       </div>
       <div className="card_sep"></div>
       <div
-        className={classNames({ card_text: true, card_text_edited: isEdited })}
+        className={classNames({ card_description: true, edited: isEdited })}
+        id="enteredDescription"
         contentEditable={isEdited}
-        onInput={updateText}
+        onBlur={updateValues}
         suppressContentEditableWarning={true}
       >
-        {enteredText}
+        {enteredValues.enteredDescription}
       </div>
     </div>
   );

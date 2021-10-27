@@ -3,9 +3,15 @@ import "./Body.css";
 import Card from "./Card";
 
 function Body(props) {
+  const changeHandler = (newCard) => {
+    props.onChange(newCard);
+  };
+
   return (
     <div className="body">
-      {props.items.map(item => {return <Card item={item} key={item.id}/>})}
+      {props.cards.map((item) => {
+        return <Card item={item} key={item.id} onChange={changeHandler} />;
+      })}
     </div>
   );
 }

@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import "./Controls.css";
-import { FaRegCheckCircle } from "react-icons/fa";
-import { FaBan } from "react-icons/fa";
-import { FaPen } from "react-icons/fa";
-import { FaRegSquare } from "react-icons/fa";
-import { FaRegCheckSquare } from "react-icons/fa";
+import {
+  FaRegCheckCircle,
+  FaBan,
+  FaPen,
+  FaRegSquare,
+  FaRegCheckSquare,
+} from "react-icons/fa";
 
 function Controls(props) {
-
-  const noDispl = "control-display-none";
-
   const [isSelected, setIsSelected] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
 
@@ -37,24 +35,27 @@ function Controls(props) {
     props.onSelected(!isSelected);
   };
 
+  const showEditMode = () => {
+    return (
+      <div>
+        <FaRegCheckCircle onClick={isSavedHandler} />
+        <FaBan onClick={isCanceledHandler} />
+      </div>
+    );
+  };
+
+  const showViewMode = () => {
+    return (
+      <div>
+        <FaPen onClick={isEditedHandler} />
+        {isSelected ? (<FaRegCheckSquare onClick={isSelectedHandler}/>) : (<FaRegSquare onClick={isSelectedHandler} />)}
+      </div>
+    );
+  };
+
   return (
-    <div className="controls">
-      <FaRegCheckCircle
-        className={!isEdited ? noDispl : ""}
-        onClick={isSavedHandler}
-      />
-      <FaBan className={!isEdited ? noDispl : ""} onClick={isCanceledHandler} />
-
-      <FaPen className={isEdited ? noDispl : ""} onClick={isEditedHandler} />
-
-      <FaRegSquare
-        className={isSelected | isEdited ? noDispl : ""}
-        onClick={isSelectedHandler}
-      />
-      <FaRegCheckSquare
-        className={!isSelected | isEdited ? noDispl : ""}
-        onClick={isSelectedHandler}
-      />
+    <div>
+      {isEdited ? showEditMode() : showViewMode()}
     </div>
   );
 }
