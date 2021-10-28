@@ -2,20 +2,25 @@ import classNames from "classnames";
 import React, { useState } from "react";
 import "./Card.css";
 import Controls from "./Controls";
+import Field from "./Field";
 
 function Card(props) {
   const [isSelected, setSelected] = useState(false);
   const [isEdited, setEdited] = useState(false);
 
-  const [enteredValues, setEnteredValues] = useState({
-    curBrand: props.item.brand,
-    curModel: props.item.model,
-    curYear: props.item.year,
-    curDescription: props.item.description,
-    enteredBrand: props.item.brand,
-    enteredModel: props.item.model,
-    enteredYear: props.item.year,
-    enteredDescription: props.item.description,
+  const [values, setValues] = useState({
+    current: {
+      brand: props.item.brand,
+      model: props.item.model,
+      year: props.item.year,
+      description: props.item.description,
+    },
+    entered: {
+      brand: props.item.brand,
+      model: props.item.model,
+      year: props.item.year,
+      description: props.item.description,
+    },
   });
 
   const setEditedHandler = (value) => {
@@ -27,36 +32,37 @@ function Card(props) {
   };
 
   const saveClickHandler = () => {
-    setEnteredValues({
-      ...enteredValues,
-      curBrand: enteredValues.enteredBrand,
-      curModel: enteredValues.enteredModel,
-      curYear: enteredValues.enteredYear,
-      curDescription: enteredValues.enteredDescription,
+    const newValues = {
+      ...values.entered,
+    };
+    setValues({
+      ...values,
+      current: newValues,
     });
     props.onChange({
       id: props.item.id,
-      brand: enteredValues.enteredBrand,
-      model: enteredValues.enteredModel,
-      year: enteredValues.enteredYear,
-      description: enteredValues.enteredDescription,
+      ...values.entered,
     });
   };
 
   const cancelClickHandler = () => {
-    setEnteredValues({
-      ...enteredValues,
-      enteredBrand: enteredValues.curBrand,
-      enteredModel: enteredValues.curModel,
-      enteredYear: enteredValues.curYear,
-      enteredDescription: enteredValues.curDescription,
+    const newValues = {
+      ...values.current,
+    };
+    setValues({
+      ...values,
+      entered: newValues,
     });
   };
 
   const updateValues = (event) => {
-    setEnteredValues({
-      ...enteredValues,
+    const newValues = {
+      ...values.entered,
       [event.target.id]: event.target.innerText,
+    };
+    setValues({
+      ...values,
+      entered: newValues,
     });
   };
 
@@ -64,32 +70,25 @@ function Card(props) {
     <div className={classNames({ card: true, card_selected: isSelected })}>
       <div className="card_oneline">
         <div className="card_header">
-          <div
-            className={classNames({ edited: isEdited })}
-            id="enteredBrand"
-            contentEditable={isEdited}
-            onBlur={updateValues}
-            suppressContentEditableWarning={true}
-          >
-            {enteredValues.enteredBrand}
-          </div>
-          <div
-            className={classNames({ edited: isEdited })}
-            id="enteredModel"
-            contentEditable={isEdited}
-            onBlur={updateValues}
-            suppressContentEditableWarning={true}
-          >
-            {enteredValues.enteredModel}
-          </div>
-          <div
-            className={classNames({ edited: isEdited })}
-            id="enteredYear"
-            contentEditable={isEdited}
-            onBlur={updateValues}
-            suppressContentEditableWarning={true}
-          >
-            {enteredValues.enteredYear}
+          <div onBlur={updateValues}>
+            <Field
+              className={classNames({ edited: isEdited })}
+              id="brand"
+              isEdited={isEdited}
+              value={values.entered.brand}
+            />
+            <Field
+              className={classNames({ edited: isEdited })}
+              id="model"
+              isEdited={isEdited}
+              value={values.entered.model}
+            />
+            <Field
+              className={classNames({ edited: isEdited })}
+              id="year"
+              isEdited={isEdited}
+              value={values.entered.year}
+            />
           </div>
         </div>
         <div className="card_checkbox">
@@ -98,18 +97,19 @@ function Card(props) {
             onEditMode={setEditedHandler}
             onSave={saveClickHandler}
             onCancel={cancelClickHandler}
+            isEdited={isEdited}
+            isSelected={isSelected}
           />
         </div>
       </div>
       <div className="card_sep"></div>
-      <div
-        className={classNames({ card_description: true, edited: isEdited })}
-        id="enteredDescription"
-        contentEditable={isEdited}
-        onBlur={updateValues}
-        suppressContentEditableWarning={true}
-      >
-        {enteredValues.enteredDescription}
+      <div onBlur={updateValues}>
+        <Field
+          className={classNames({ card_description: true, edited: isEdited })}
+          id="description"
+          isEdited={isEdited}
+          value={values.entered.description}
+        />
       </div>
     </div>
   );

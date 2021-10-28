@@ -8,8 +8,8 @@ import {
 } from "react-icons/fa";
 
 function Controls(props) {
-  const [isSelected, setIsSelected] = useState(false);
-  const [isEdited, setIsEdited] = useState(false);
+  const [isSelected, setIsSelected] = useState(props.isSelected);
+  const [isEdited, setIsEdited] = useState(props.isEdited);
 
   const isSavedHandler = () => {
     setIsEdited(!isEdited);

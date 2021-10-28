@@ -32,11 +32,11 @@
   width: 75%;
 }
 
-.edited {
-  border-bottom-style: inset;
-}
-
 .card_checkbox {
   text-align: right;
   width: 25%;
+}
+
+.edited {
+  border-bottom-style: inset;
 }

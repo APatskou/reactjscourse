@@ -9,9 +9,9 @@ function Body(props) {
 
   return (
     <div className="body">
-      {props.cards.map((item) => {
-        return <Card item={item} key={item.id} onChange={changeHandler} />;
-      })}
+      {props.cards.map((item) => (
+        <Card item={item} key={item.id} onChange={changeHandler} />
+      ))}
     </div>
   );
 }
