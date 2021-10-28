@@ -32,12 +32,9 @@ function Card(props) {
   };
 
   const saveClickHandler = () => {
-    const newValues = {
-      ...values.entered,
-    };
     setValues({
       ...values,
-      current: newValues,
+      current: values.entered,
     });
     props.onChange({
       id: props.item.id,
@@ -46,12 +43,9 @@ function Card(props) {
   };
 
   const cancelClickHandler = () => {
-    const newValues = {
-      ...values.current,
-    };
     setValues({
       ...values,
-      entered: newValues,
+      entered: values.current,
     });
   };
 
